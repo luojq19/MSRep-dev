@@ -162,8 +162,4 @@ cython_debug/
 data
 data/
 logs*/
-run.sh
-baselines/
-CAFA-evaluator/
-esm/
-jupyters/
+esm_embeddings/
