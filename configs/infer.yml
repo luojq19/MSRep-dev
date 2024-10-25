@@ -1,6 +1,6 @@
-model_dir: logs_GO_tune/train_mlp_GO_CC_new_NC_0.5_weight_deeper_MLPLayernorm_2024_07_25__12_13_31_seed_4
-lookup_data: data/GO_CC/swissprot_GO_CC_by2022-05-25.pt
-test_data: data/GO_CC/swissprot_GO_CC_after2022-05-25_filtered.pt
-label_file: data/GO_CC/GO_CC_labels_by2022-05-25.json
+model_dir: logs/train_EC_2024_10_25__13_26_04
+lookup_data: data/ec_new/swissprot_ec_complete_by2022-05-25.pt
+test_data: data/ec_new/swissprot_ec_complete_after_2022-05-25_filtered.pt
+label_file: data/ec_new/ec_list_by2022-05-25.json
 topk: 1
-ont: CC
+ont: ec

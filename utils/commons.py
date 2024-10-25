@@ -105,7 +105,7 @@ def get_random_indices(length, seed=123):
     np.random.set_state(st0)
     return random_indices
 
-def get_leveled_acc(pred_labels, gt_labels, label2occurance, log_dir, levels=[10, 30, 100]):
+def get_leveled_acc(pred_labels, gt_labels, label2occurrence, log_dir, levels=[10, 30, 100]):
     assert len(pred_labels) == len(gt_labels), f'{len(pred_labels)} != {len(gt_labels)}'
     label2correct, label2test_num = {}, {}
     n = len(pred_labels)
@@ -117,23 +117,23 @@ def get_leveled_acc(pred_labels, gt_labels, label2occurance, log_dir, levels=[10
         if pred_labels[i] == gt_labels[i]:
             label2correct[gt_labels[i]] += 1
     label2acc = {k: label2correct[k] / label2test_num[k] for k in label2test_num}
-    occurance_levels = []
-    occurance_levels.append(f'[{levels[-1]}, +$\infty$)')
+    occurrence_levels = []
+    occurrence_levels.append(f'[{levels[-1]}, +$\infty$)')
     for i in range(len(levels) - 1, 0, -1):
-        occurance_levels.append(f'[{levels[i-1]}, {levels[i]})')
-    occurance_levels.append(f'[0, {levels[0]})')
-    print(f'occurance_levels: {occurance_levels}')
-    level2correct, level2test_num = {level: 0 for level in occurance_levels}, {level: 0 for level in occurance_levels}
+        occurrence_levels.append(f'[{levels[i-1]}, {levels[i]})')
+    occurrence_levels.append(f'[0, {levels[0]})')
+    print(f'occurrence_levels: {occurrence_levels}')
+    level2correct, level2test_num = {level: 0 for level in occurrence_levels}, {level: 0 for level in occurrence_levels}
     for label in label2test_num:
-        occurance = label2occurance[label]
+        occurrence = label2occurrence[label]
         for i in range(len(levels)):
-            if occurance >= levels[len(levels) - 1 - i]:
-                level2test_num[occurance_levels[i]] += label2test_num[label]
-                level2correct[occurance_levels[i]] += label2correct[label]
+            if occurrence >= levels[len(levels) - 1 - i]:
+                level2test_num[occurrence_levels[i]] += label2test_num[label]
+                level2correct[occurrence_levels[i]] += label2correct[label]
                 break
-        if occurance < levels[0]:
-            level2test_num[occurance_levels[-1]] += label2test_num[label]
-            level2correct[occurance_levels[-1]] += label2correct[label]
+        if occurrence < levels[0]:
+            level2test_num[occurrence_levels[-1]] += label2test_num[label]
+            level2correct[occurrence_levels[-1]] += label2correct[label]
     level2acc = {level: level2correct[level] / level2test_num[level] for level in level2test_num}
     for level in level2acc:
         print(f'{level}: {level2acc[level]:.4f}')
@@ -142,20 +142,20 @@ def get_leveled_acc(pred_labels, gt_labels, label2occurance, log_dir, levels=[10
             json.dump(level2acc, f)
             
     fig, axes = plt.subplots(1, 2, figsize=(20, 10), dpi=400)
-    occurance_list = sorted(list(label2occurance.values()), reverse=True)
-    axes[0].plot(occurance_list)
+    occurrence_list = sorted(list(label2occurrence.values()), reverse=True)
+    axes[0].plot(occurrence_list)
     axes[0].set_xlabel('ECs', fontsize=20)
-    axes[0].set_ylabel('Occurance', fontsize=20)
-    axes[0].set_title('EC Occurance in train set', fontsize=20)
+    axes[0].set_ylabel('occurrence', fontsize=20)
+    axes[0].set_title('EC occurrence in train set', fontsize=20)
     
     axes[1].plot(list(level2acc.values()))
     for i, txt in enumerate(list(level2acc.values())):
         axes[1].annotate(f'{txt:.4f}', (i, list(level2acc.values())[i]), fontsize=10)
-    axes[1].set_xticks(range(len(occurance_levels)), occurance_levels)
+    axes[1].set_xticks(range(len(occurrence_levels)), occurrence_levels)
     axes[1].set_ylim(0, 1)
-    axes[1].set_xlabel('EC occurance levels', fontsize=20)
+    axes[1].set_xlabel('EC occurrence levels', fontsize=20)
     axes[1].set_ylabel('Accuracy', fontsize=20)
-    axes[1].set_title('EC Accuracy with descending occurance', fontsize=20)
+    axes[1].set_title('EC Accuracy with descending occurrence', fontsize=20)
     
     plt.tight_layout()
     if log_dir is not None:

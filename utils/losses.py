@@ -231,7 +231,7 @@ class NC1Loss_v2_cosine(nn.Module):
     '''
     Modified Center loss, 1 / n_k * ||h-miu|| / (||h|| * ||miu||), here n_k will be calculated from the entire training set insead of the mini-batch
     '''
-    def __init__(self, num_classes=10, feat_dim=128, device='cuda:0', occurance_list=None, fixed_means=False):
+    def __init__(self, num_classes=10, feat_dim=128, device='cuda:0', occurrence_list=None, fixed_means=False):
         super().__init__()
         self.num_classes = num_classes
         self.feat_dim = feat_dim
@@ -243,7 +243,7 @@ class NC1Loss_v2_cosine(nn.Module):
         else:
             print('#####################Fixed means##################')
             self.means = torch.randn(self.num_classes, self.feat_dim).to(self.device)
-        self.N = torch.tensor(occurance_list).to(self.device)
+        self.N = torch.tensor(occurrence_list).to(self.device)
 
     def forward(self, x, labels):
         """
@@ -283,7 +283,7 @@ class NC1Loss_v3_cosine(nn.Module):
     '''
     Modified Center loss, 1 / n_k^2 * ||h-miu|| / (||h|| * ||miu||), here n_k will be calculated from the entire training set insead of the mini-batch
     '''
-    def __init__(self, num_classes=10, feat_dim=128, device='cuda:0', occurance_list=None, fixed_means=False):
+    def __init__(self, num_classes=10, feat_dim=128, device='cuda:0', occurrence_list=None, fixed_means=False):
         super().__init__()
         print(f'Use NC1Loss_v3_cosine, which uses squared n_k')
         # input()
@@ -297,7 +297,7 @@ class NC1Loss_v3_cosine(nn.Module):
         else:
             print('#####################Fixed means##################')
             self.means = torch.randn(self.num_classes, self.feat_dim).to(self.device)
-        self.N = torch.tensor(occurance_list).to(self.device)
+        self.N = torch.tensor(occurrence_list).to(self.device)
 
     def forward(self, x, labels):
         """
@@ -337,7 +337,7 @@ class NC1Loss_v4_cosine(nn.Module):
     '''
     Modified Center loss, 1 / n_k^1.5 * ||h-miu|| / (||h|| * ||miu||), here n_k will be calculated from the entire training set insead of the mini-batch
     '''
-    def __init__(self, num_classes=10, feat_dim=128, device='cuda:0', occurance_list=None, fixed_means=False):
+    def __init__(self, num_classes=10, feat_dim=128, device='cuda:0', occurrence_list=None, fixed_means=False):
         super().__init__()
         print(f'Use NC1Loss_v4_cosine, which uses n_k^1.5')
         # input()
@@ -351,7 +351,7 @@ class NC1Loss_v4_cosine(nn.Module):
         else:
             print('#####################Fixed means##################')
             self.means = torch.randn(self.num_classes, self.feat_dim).to(self.device)
-        self.N = torch.tensor(occurance_list).to(self.device)
+        self.N = torch.tensor(occurrence_list).to(self.device)
 
     def forward(self, x, labels):
         """
@@ -391,7 +391,7 @@ class NC1Loss_v5_cosine(nn.Module):
     '''
     Modified Center loss, 1 / n_k^0.5 * ||h-miu|| / (||h|| * ||miu||), here n_k will be calculated from the entire training set insead of the mini-batch
     '''
-    def __init__(self, num_classes=10, feat_dim=128, device='cuda:0', occurance_list=None, fixed_means=False):
+    def __init__(self, num_classes=10, feat_dim=128, device='cuda:0', occurrence_list=None, fixed_means=False):
         super().__init__()
         print(f'Use NC1Loss_v5_cosine, which uses n_k^0.5')
         # input()
@@ -405,7 +405,7 @@ class NC1Loss_v5_cosine(nn.Module):
         else:
             print('#####################Fixed means##################')
             self.means = torch.randn(self.num_classes, self.feat_dim).to(self.device)
-        self.N = torch.tensor(occurance_list).to(self.device)
+        self.N = torch.tensor(occurrence_list).to(self.device)
 
     def forward(self, x, labels):
         """
@@ -445,7 +445,7 @@ class NC1Loss_v6_cosine(nn.Module):
     '''
     Modified Center loss, 1 / n_k^0.0 * ||h-miu|| / (||h|| * ||miu||), here n_k will be calculated from the entire training set insead of the mini-batch
     '''
-    def __init__(self, num_classes=10, feat_dim=128, device='cuda:0', occurance_list=None, fixed_means=False):
+    def __init__(self, num_classes=10, feat_dim=128, device='cuda:0', occurrence_list=None, fixed_means=False):
         super().__init__()
         print(f'Use NC1Loss_v6_cosine, which uses n_k^0.0')
         # input()
@@ -459,7 +459,7 @@ class NC1Loss_v6_cosine(nn.Module):
         else:
             print('#####################Fixed means##################')
             self.means = torch.randn(self.num_classes, self.feat_dim).to(self.device)
-        self.N = torch.tensor(occurance_list).to(self.device)
+        self.N = torch.tensor(occurrence_list).to(self.device)
 
     def forward(self, x, labels):
         """
@@ -500,7 +500,7 @@ class NC1Loss_v7_cosine(nn.Module):
     '''
     Modified Center loss, 1 / n_k^0.8 * ||h-miu|| / (||h|| * ||miu||), here n_k will be calculated from the entire training set insead of the mini-batch
     '''
-    def __init__(self, num_classes=10, feat_dim=128, device='cuda:0', occurance_list=None, fixed_means=False):
+    def __init__(self, num_classes=10, feat_dim=128, device='cuda:0', occurrence_list=None, fixed_means=False):
         super().__init__()
         print(f'Use NC1Loss_v7_cosine, which uses n_k^0.8')
         # input()
@@ -514,7 +514,7 @@ class NC1Loss_v7_cosine(nn.Module):
         else:
             print('#####################Fixed means##################')
             self.means = torch.randn(self.num_classes, self.feat_dim).to(self.device)
-        self.N = torch.tensor(occurance_list).to(self.device)
+        self.N = torch.tensor(occurrence_list).to(self.device)
 
     def forward(self, x, labels):
         """
@@ -554,7 +554,7 @@ class NC1Loss_v8_cosine(nn.Module):
     '''
     Modified Center loss, 1 / n_k^1.2 * ||h-miu|| / (||h|| * ||miu||), here n_k will be calculated from the entire training set insead of the mini-batch
     '''
-    def __init__(self, num_classes=10, feat_dim=128, device='cuda:0', occurance_list=None, fixed_means=False):
+    def __init__(self, num_classes=10, feat_dim=128, device='cuda:0', occurrence_list=None, fixed_means=False):
         super().__init__()
         print(f'Use NC1Loss_v8_cosine, which uses n_k^1.2')
         # input()
@@ -568,7 +568,7 @@ class NC1Loss_v8_cosine(nn.Module):
         else:
             print('#####################Fixed means##################')
             self.means = torch.randn(self.num_classes, self.feat_dim).to(self.device)
-        self.N = torch.tensor(occurance_list).to(self.device)
+        self.N = torch.tensor(occurrence_list).to(self.device)
 
     def forward(self, x, labels):
         """
@@ -608,7 +608,7 @@ class NC1Loss_v9_cosine(nn.Module):
     '''
     Modified Center loss, 1 / log2(n_k + 1) * ||h-miu|| / (||h|| * ||miu||), here n_k will be calculated from the entire training set insead of the mini-batch
     '''
-    def __init__(self, num_classes=10, feat_dim=128, device='cuda:0', occurance_list=None, fixed_means=False):
+    def __init__(self, num_classes=10, feat_dim=128, device='cuda:0', occurrence_list=None, fixed_means=False):
         super().__init__()
         print(f'Use NC1Loss_v9_cosine, which uses log2(n_k + 1)')
         # input()
@@ -622,7 +622,7 @@ class NC1Loss_v9_cosine(nn.Module):
         else:
             print('#####################Fixed means##################')
             self.means = torch.randn(self.num_classes, self.feat_dim).to(self.device)
-        self.N = torch.tensor(occurance_list).to(self.device)
+        self.N = torch.tensor(occurrence_list).to(self.device)
 
     def forward(self, x, labels):
         """
@@ -662,7 +662,7 @@ class NC1Loss_v10_cosine_weight_factor(nn.Module):
     '''
     Modified Center loss, 1 / n_k^weight_factor * ||h-miu|| / (||h|| * ||miu||), here n_k will be calculated from the entire training set insead of the mini-batch
     '''
-    def __init__(self, num_classes=10, feat_dim=128, device='cuda:0', occurance_list=None, fixed_means=False, weight_factor=1.0):
+    def __init__(self, num_classes=10, feat_dim=128, device='cuda:0', occurrence_list=None, fixed_means=False, weight_factor=1.0):
         super().__init__()
         print(f'Use NC1Loss_v10_cosine_weight_factor, which uses n_k^{weight_factor}')
         # input()
@@ -676,7 +676,7 @@ class NC1Loss_v10_cosine_weight_factor(nn.Module):
         else:
             print('#####################Fixed means##################')
             self.means = torch.randn(self.num_classes, self.feat_dim).to(self.device)
-        self.N = torch.tensor(occurance_list).to(self.device)
+        self.N = torch.tensor(occurrence_list).to(self.device)
         self.weight_factor = weight_factor
 
     def forward(self, x, labels):
@@ -714,7 +714,7 @@ class NC1Loss_v10_cosine_weight_factor(nn.Module):
         return loss, self.means
 
 class NC1Loss_cosine_mlab(nn.Module):
-    def __init__(self, num_single_classes=10, num_multi_classes=10, feat_dim=128, multi_class_idx_list=None, device='cuda:0', occurance_list=None):
+    def __init__(self, num_single_classes=10, num_multi_classes=10, feat_dim=128, multi_class_idx_list=None, device='cuda:0', occurrence_list=None):
         super().__init__()
         self.num_single_classes = num_single_classes
         self.num_multi_classes = num_multi_classes
@@ -733,7 +733,7 @@ class NC1Loss_cosine_mlab(nn.Module):
         self.means = torch.cat((self.single_class_means, self.multi_class_means), dim=0)
         print(f'means: {self.means.shape}')
         
-        self.N = torch.tensor(occurance_list).to(self.device)
+        self.N = torch.tensor(occurrence_list).to(self.device)
 
     def forward(self, x, labels):
         """
@@ -762,7 +762,7 @@ class NC1Loss_cosine_mlab(nn.Module):
         return loss, self.means
 
 class NC1Loss_cosine_mlab_v1(nn.Module):
-    def __init__(self, num_single_classes=10, num_multi_classes=10, feat_dim=128, multi_class_idx_list=None, device='cuda:0', occurance_list=None):
+    def __init__(self, num_single_classes=10, num_multi_classes=10, feat_dim=128, multi_class_idx_list=None, device='cuda:0', occurrence_list=None):
         super().__init__()
         self.num_single_classes = num_single_classes
         self.num_multi_classes = num_multi_classes
@@ -782,7 +782,7 @@ class NC1Loss_cosine_mlab_v1(nn.Module):
         print(f'means: {self.means.shape}')
         # print(f'means: {self.means}')
         # input()
-        self.N = torch.tensor(occurance_list).to(self.device)
+        self.N = torch.tensor(occurrence_list).to(self.device)
 
     def forward(self, x, labels):
         """
@@ -883,16 +883,16 @@ class NC2Loss_v2(nn.Module):
         return loss, max_cosine
 
 class NCLoss(nn.Module):
-    def __init__(self, sup_criterion, lambda1, lambda2, lambda_CE=1.0, nc1='NC1Loss', nc2='NC2Loss', num_classes=1920, feat_dim=2000, device='cuda:0', occurance_list=None, fixed_means=False, weight_factor=None):
+    def __init__(self, sup_criterion, lambda1, lambda2, lambda_CE=1.0, nc1='NC1Loss', nc2='NC2Loss', num_classes=1920, feat_dim=2000, device='cuda:0', occurrence_list=None, fixed_means=False, weight_factor=None):
         super().__init__()
         # if nc1 not in ['NC1Loss_v2_cosine', 'NC1Loss_v3_cosine']:
         #     self.NC1 = globals()[nc1](num_classes, feat_dim, device)
         # else:
-        #     self.NC1 = globals()[nc1](num_classes, feat_dim, device, occurance_list, fixed_means)
+        #     self.NC1 = globals()[nc1](num_classes, feat_dim, device, occurrence_list, fixed_means)
         if weight_factor is None:
-            self.NC1 = globals()[nc1](num_classes, feat_dim, device, occurance_list, fixed_means)
+            self.NC1 = globals()[nc1](num_classes, feat_dim, device, occurrence_list, fixed_means)
         else:
-            self.NC1 = globals()[nc1](num_classes, feat_dim, device, occurance_list, fixed_means, weight_factor)
+            self.NC1 = globals()[nc1](num_classes, feat_dim, device, occurrence_list, fixed_means, weight_factor)
         self.NC2 = globals()[nc2]()
         self.sup_criterion = globals()[sup_criterion]()
         self.lambda1 = lambda1
@@ -938,9 +938,9 @@ class NCLoss(nn.Module):
     
 if __name__ == '__main__':
     device = 'cuda:0'
-    # criterion = NC1Loss_cosine_mlab(num_single_classes=5, num_multi_classes=2, feat_dim=8, multi_class_idx_list=[[0, 1], [2, 3]], device=device, occurance_list=[1, 1, 1, 10, 1, 1, 1])
+    # criterion = NC1Loss_cosine_mlab(num_single_classes=5, num_multi_classes=2, feat_dim=8, multi_class_idx_list=[[0, 1], [2, 3]], device=device, occurrence_list=[1, 1, 1, 10, 1, 1, 1])
     # print(criterion.means)
-    criterion = NC1Loss_v2_cosine(num_classes=5, feat_dim=8, device=device, occurance_list=[1, 1, 1, 10, 1])
+    criterion = NC1Loss_v2_cosine(num_classes=5, feat_dim=8, device=device, occurrence_list=[1, 1, 1, 10, 1])
     state_dict = criterion.state_dict()
     criterion.load_state_dict(state_dict)
     print(state_dict)
